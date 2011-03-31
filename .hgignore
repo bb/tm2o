@@ -1,0 +1,24 @@
+syntax: glob
+bin
+target
+*.class
+*.log
+*.zip
+*pom.xml.versionsBackup
+build.properties
+.settings
+.classpath
+doc/javadoc
+doc/doc
+.metadata
+.directory
+*/\${builder}
+doc/build.properties
+majortom-postgresimporter/src/test/resources/db.properties
+*.orig
+*.ctm
+*.xtm
+*.xctm
+syntax: regexp
+^majortom-db/data$
+

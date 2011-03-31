@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ActivationPolicy: lazy
+Tool: Bnd-1.15.0
+Bundle-Name: ODate 4 Topic Maps
+Created-By: 1.6.0_20 (Sun Microsystems Inc.)
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.tmapi;bundle-version="2.0.3"
+Bundle-Version: 0.0.1
+Bnd-LastModified: 1298452223140
+Bundle-ManifestVersion: 2
+Import-Package: org.osgi.framework;version="[1.4,2)",org.slf4j;version
+ ="1.6.1"
+Bundle-SymbolicName: de.topicmapslab.odata4tm
+Originally-Created-By: 1.6.0_20 (Sun Microsystems Inc.)
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+	<application>odata4tm-sample</application>
+	<version>2</version>
+	<system-properties>
+       <property name="odata4j.producerfactory" value="de.topicmapslab.odata.TopicMapODataProducerFactory" />
+       <property name="odata4j.datastore.namespace" value="TopicMaps" />
+       <property name="odata4j.datastore.devkinds" value="*" />
+       <property name="odata4j.datastore.prodkinds" value="*" />
+    </system-properties>
+</appengine-web-app>
