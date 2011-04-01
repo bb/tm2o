@@ -1,21 +1,24 @@
 Manifest-Version: 1.0
 Export-Package: de.topicmapslab.odata.content;uses:="de.topicmapslab.o
  data.edm,de.topicmapslab.odata,de.topicmapslab.odata.exception,de.top
- icmapslab.odata.config,de.topicmapslab.odata.dao,de.topicmapslab.odat
- a.util,de.topicmapslab.odata.tmql",de.topicmapslab.odata.dao;uses:="d
- e.topicmapslab.odata.edm,de.topicmapslab.odata.exception,de.topicmaps
- lab.odata.util",de.topicmapslab.odata.util;uses:="de.topicmapslab.oda
- ta.content,de.topicmapslab.odata.exception,de.topicmapslab.odata.edm,
- de.topicmapslab.odata.tmql",de.topicmapslab.odata.exception,de.topicm
- apslab.odata.config,de.topicmapslab.odata.edm;uses:="de.topicmapslab.
- odata.dao",de.topicmapslab.odata;uses:="de.topicmapslab.odata.content
- ,de.topicmapslab.odata.exception",de.topicmapslab.odata.tmql;uses:="d
- e.topicmapslab.odata.dao,de.topicmapslab.odata.util,de.topicmapslab.o
- data.edm",de.topicmapslab.odata.content.memory;uses:="de.topicmapslab
- .odata.content,de.topicmapslab.odata.exception,de.topicmapslab.odata.
- tmql",de.topicmapslab.odata.content.remote;uses:="de.topicmapslab.oda
- ta.content,de.topicmapslab.odata.exception,de.topicmapslab.odata.tmql
- "
+ icmapslab.odata.config,de.topicmapslab.odata.util,de.topicmapslab.oda
+ ta.dao,de.topicmapslab.odata.tmql",de.topicmapslab.odata.content.empt
+ y;uses:="de.topicmapslab.odata.edm,de.topicmapslab.odata.content,de.t
+ opicmapslab.odata,de.topicmapslab.odata.exception,de.topicmapslab.oda
+ ta.config",de.topicmapslab.odata.edm;uses:="de.topicmapslab.odata.dao
+ ",de.topicmapslab.odata;uses:="de.topicmapslab.odata.content.empty,de
+ .topicmapslab.odata.content,de.topicmapslab.odata.exception",de.topic
+ mapslab.odata.dao;uses:="de.topicmapslab.odata.edm,de.topicmapslab.od
+ ata.exception,de.topicmapslab.odata.util",de.topicmapslab.odata.util;
+ uses:="de.topicmapslab.odata.content,de.topicmapslab.odata.exception,
+ de.topicmapslab.odata.edm,de.topicmapslab.odata.tmql",de.topicmapslab
+ .odata.exception,de.topicmapslab.odata.tmql;uses:="de.topicmapslab.od
+ ata.dao,de.topicmapslab.odata.util,de.topicmapslab.odata.edm",de.topi
+ cmapslab.odata.content.memory;uses:="de.topicmapslab.odata.content,de
+ .topicmapslab.odata.exception,de.topicmapslab.odata.tmql",de.topicmap
+ slab.odata.content.remote;uses:="de.topicmapslab.odata.content,de.top
+ icmapslab.odata.exception,de.topicmapslab.odata.tmql",de.topicmapslab
+ .odata.config
 Bundle-ActivationPolicy: lazy
 Tool: Bnd-1.15.0
 Bundle-Name: ODate 4 Topic Maps
@@ -23,7 +26,7 @@ Created-By: 1.6.0_20 (Sun Microsystems Inc.)
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.tmapi;bundle-version="2.0.3"
 Bundle-Version: 0.0.1
-Bnd-LastModified: 1301581594947
+Bnd-LastModified: 1301668093968
 Bundle-ManifestVersion: 2
 Bundle-Description: Odata for Topic Maps
 Import-Package: org.osgi.framework;version="[1.4,2)",org.slf4j;version

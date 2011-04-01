@@ -2,6 +2,7 @@ package de.topicmapslab.odata.content;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -489,7 +490,12 @@ public abstract class OdataContentProviderImpl implements IOdataContentProvider 
 		/*
 		 * create filters and oder query parts
 		 */
-		proceedQueryInfo(queryBuilder, queryInfo);
+		try {
+			proceedQueryInfo(queryBuilder, queryInfo);
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+			return Collections.emptyList();
+		}
 		/*
 		 * create results
 		 */

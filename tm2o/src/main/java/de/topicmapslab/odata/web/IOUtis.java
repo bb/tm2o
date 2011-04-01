@@ -3,8 +3,12 @@ package de.topicmapslab.odata.web;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import de.topicmapslab.odata.TopicMapODataProducerFactory;
 import de.topicmapslab.odata.config.EContentProviderConfiguration;
@@ -116,6 +122,47 @@ public class IOUtis {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	/**
+	 * Utility method to fetch all topic map IDs from server
+	 * 
+	 * @param serverAddress
+	 *            the server address
+	 * @return a possible empty map of locator and ID
+	 */
+	public static Map<String, String> getTopicMapIds(final String serverAddress) {
+		Map<String, String> topicMaps = new HashMap<String, String>();
+
+		try {
+			/*
+			 * open streams
+			 */
+			URL url = new URL(serverAddress + "/tm/topicmaps");
+			URLConnection connection = url.openConnection();
+			connection.setDoInput(true);
+			/*
+			 * proceed response as extended JTMQR
+			 */
+			InputStream is = connection.getInputStream();
+			ObjectMapper m = new ObjectMapper();
+			JsonNode rootNode = m.readValue(is, JsonNode.class);
+			JsonNode data = rootNode.path("data");
+			if (!data.isMissingNode()) {
+				JsonNode tm = data.path("topicmaps");
+				if (!tm.isMissingNode()) {
+					Iterator<JsonNode> tms = tm.getElements();
+					while (tms.hasNext()) {
+						JsonNode n = tms.next();
+						topicMaps.put(n.get("locator").getTextValue(), n.get("id").getTextValue());
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+
+		return topicMaps;
 	}
 
 }

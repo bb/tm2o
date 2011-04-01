@@ -17,7 +17,7 @@ import org.odata4j.edm.EdmSchema;
 import org.odata4j.producer.QueryInfo;
 
 import de.topicmapslab.odata.content.IOdataContentProvider;
-import de.topicmapslab.odata.exception.TopicMapsODataException;
+import de.topicmapslab.odata.content.empty.EmptyOdataContentProvider;
 
 /**
  * the topic map meta data provider
@@ -117,6 +117,17 @@ public class TopicMapMetadata {
 		EdmSchema schema = new EdmSchema(namespace, null, entityTypes, null, associations, containers);
 		schemas.add(schema);
 		return new EdmDataServices(ODataConstants.DATA_SERVICE_VERSION, schemas);
+	}
+
+	/**
+	 * Checks if the service for the given topic map id is loaded
+	 * 
+	 * @param topicMapId
+	 *            the topic map id
+	 * @return <code>true</code> if the service is loaded, <code>false</code> otherwise.
+	 */
+	public boolean isLoadedService(final String topicMapId) {
+		return services.containsKey(topicMapId);
 	}
 
 	/**
@@ -231,7 +242,8 @@ public class TopicMapMetadata {
 			contentProviders.put(topicMapId, contentProvider);
 			return contentProvider;
 		} catch (Exception e) {
-			throw new TopicMapsODataException(e);
+			e.printStackTrace(System.err);
+			return new EmptyOdataContentProvider();
 		}
 	}
 }

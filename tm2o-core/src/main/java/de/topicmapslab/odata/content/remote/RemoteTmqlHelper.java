@@ -84,7 +84,7 @@ public class RemoteTmqlHelper extends TmqlHelper {
 			for (Object o : arguments) {
 				stmt.set(i++, o);
 			}
-			return remoteExecute(stmt.getNonParametrizedQueryString());
+			return remoteExecute(stmt.getNonParameterizedQueryString());
 		} finally {
 			lock.unlock();
 		}
@@ -139,7 +139,7 @@ public class RemoteTmqlHelper extends TmqlHelper {
 			OutputStream os = connection.getOutputStream();
 			os.write(msg.getBytes(UTF_8));
 			os.flush();
-			BufferedReader r = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			BufferedReader r = new BufferedReader(new InputStreamReader(connection.getInputStream(), UTF_8));
 			StringBuilder builder = new StringBuilder();
 			String line = r.readLine();
 			while (line != null) {
@@ -151,12 +151,13 @@ public class RemoteTmqlHelper extends TmqlHelper {
 			/*
 			 * proceed response as extended JTMQR
 			 */
-			ExtendedJTMQRReader reader = new ExtendedJTMQRReader(new ByteArrayInputStream(builder.toString().getBytes("utf-8")));
-			IResultSet<?> set = reader.readResultSet();
+			MaJorToMJSONReader reader = new MaJorToMJSONReader(new ByteArrayInputStream(builder.toString().getBytes("utf-8")));
+			reader.read();
+			IResultSet<?> set = reader.getResultSet();
 			/*
 			 * check incoming state
 			 */
-			if (reader.getLastState() != ExtendedJTMQRReader.STATE_OK) {
+			if (reader.getLastState() != MaJorToMJSONReader.STATE_OK) {
 				throw new TopicMapsODataException(reader.getLastMessage());
 			}
 			return set;

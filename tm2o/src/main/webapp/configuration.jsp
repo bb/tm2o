@@ -70,13 +70,19 @@
       <div id="header">
         <div class="container">
           <div class="span-20 prepend-2 append-2 last">
+          	<img src="<%=getServletContext().getContextPath()%>/resources/images/odata.png" style="position:absolute;left:5px;top:5px;"/>
             <div id="logo">
               <h1>TM2O-Service Configuration</h1>
             </div>
           </div>
         </div>
-      </div>
+      </div>      	
 	    <div id="content">&nbsp;
+	    <h2>Configuration</h2>
+      	<br />
+      	Please add something like: If you need help for the configuration please read the <a href="http://code.google.com/p/tm2o/wiki/Configuration"> here</a>.
+      	<br />
+      	<hr />
 			<%
 				TopicMapODataProducer producer = TopicMapODataProducerFactory.getProducerInstance();
 				TopicMapMetadata mt = producer.getService();
@@ -164,7 +170,7 @@
 				</tr>
 			</table>
 			<input type="submit" value="Set"></form>    
-	    </div>
+	    </div>	    
 	</div>
     <div id="footer">
       <div class="container">
@@ -180,8 +186,6 @@
     <a id="sideLabelLink" href="http://www.topicmapslab.de/"><span id="sideLabel">
      &nbsp;</span></a>
      </div> 
-
-</div>
 <div><a id="sideLabelLink" href="http://www.topicmapslab.de/"><span
 	id="sideLabel"> &nbsp;</span></a></div>
 </body>

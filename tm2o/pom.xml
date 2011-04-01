@@ -57,6 +57,7 @@
 					<warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
 					<update>true</update>
 					<url>http://localhost:8080/manager/html</url>
+					<tomcatWebXml>${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml</tomcatWebXml>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -224,19 +225,25 @@
             <artifactId>eclipselink</artifactId>
             <version>${eclipselink.version}</version>
         </dependency>
-        <dependency>
+        <!-- dependency>
         	<groupId>javax.servlet</groupId>
         	<artifactId>servlet-api</artifactId>
         	<version>2.5</version>
         	<type>jar</type>
-        	<scope>compile</scope>
-        </dependency>
+        	<scope>provided</scope>
+        </dependency-->
         <dependency>
         	<groupId>org.apache.tomcat</groupId>
         	<artifactId>tomcat-coyote</artifactId>
         	<version>7.0.11</version>
         	<type>jar</type>
         	<scope>compile</scope>
+        </dependency>
+        <dependency>
+        	<groupId>javax.servlet</groupId>
+        	<artifactId>servlet-api</artifactId>
+        	<version>2.5</version>
+        	<scope>provided</scope>
         </dependency>
 	</dependencies>
 </project>
