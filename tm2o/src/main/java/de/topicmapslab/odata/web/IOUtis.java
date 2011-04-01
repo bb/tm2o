@@ -159,7 +159,7 @@ public class IOUtis {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace(System.err);
+			return null;
 		}
 
 		return topicMaps;

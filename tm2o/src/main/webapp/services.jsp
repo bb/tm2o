@@ -53,7 +53,11 @@ Usually the topic maps exposed by this service as OData are managed by an extern
 		Object serverAddress = mt.getProperties().get("server");
 		if ( serverAddress != null ){
 			Map<String, String> tms = IOUtis.getTopicMapIds(serverAddress.toString());
-			if ( tms.isEmpty()){
+			if ( tms == null ){
+%>
+		<b>The MaJorToM server does not response to any request.</b>
+<%
+			}else if ( tms.isEmpty()){
 				%>
 			<b>No topic maps created yet, go to <a href="<%= serverAddress.toString() + "/admin/newtopicmap"%>">administration interface</a> to upload a new file!</b>
 				<%
