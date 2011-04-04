@@ -100,11 +100,4 @@ You can configure your TM2O service <a href="<%= getServletContext().getContextP
 </div>
 </div>
 </div>
-<div><a id="sideLabelLink" href="http://www.topicmapslab.de/"><span
-	id="sideLabel"> &nbsp;</span></a></div>
-
-</div>
-<div><a id="sideLabelLink" href="http://www.topicmapslab.de/"><span
-	id="sideLabel"> &nbsp;</span></a></div>
-</body>
 </html>

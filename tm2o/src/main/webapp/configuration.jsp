@@ -124,12 +124,20 @@
 					prop = cfg.getProperties();
 					file = "";
 					url = !local ? prop.get("server").toString() : "";
-					flatAssociation = prop.get("association-mode").toString().equalsIgnoreCase(EContentProviderConfiguration.FLAT_ASSOCIATION.name());
+					flatAssociation = prop.get("association-mode").toString().equalsIgnoreCase(EContentProviderConfiguration.FLAT_ASSOCIATION.name());					
 				}
 			%>
 			<form action="configuration.jsp" method="POST"
 				enctype="multipart/form-data">
 			<table>
+				<% if (request.getMethod().equalsIgnoreCase("POST") ) { %>
+				<tr>
+					<td />
+					<td style="font-weight: bold;">
+						Operation was successful
+					</td>
+				</tr>				
+				<% } %>
 				<tr>
 					<td><b>Namespace:</b></td>
 					<td><input name="namespace" type="text" value="<%=namespace%> "
@@ -168,9 +176,16 @@
 					<td><input name="address" id="address" type="text"
 						value="<%=url%>" size="50" onblur="checkServer()"></td>
 				</tr>
+				<tr>
+					<td />
+					<td> <input type="submit" value="Set"> </td>
+				</tr>
 			</table>
-			<input type="submit" value="Set"></form>    
-	    </div>	    
+			</form>
+			<br />
+			<hr />
+	    	Available services listed <a href="<%= getServletContext().getContextPath() + "/services.jsp"%>"> here</a><br />    
+	    </div>	   
 	</div>
     <div id="footer">
       <div class="container">
@@ -183,11 +198,5 @@
         </div>
       </div>
     </div>
-    <div>
-    <a id="sideLabelLink" href="http://www.topicmapslab.de/"><span id="sideLabel">
-     &nbsp;</span></a>
-     </div> 
-<div><a id="sideLabelLink" href="http://www.topicmapslab.de/"><span
-	id="sideLabel"> &nbsp;</span></a></div>
 </body>
 </html>
