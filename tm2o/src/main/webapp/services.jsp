@@ -92,6 +92,7 @@ You can configure your TM2O service <a href="<%= getServletContext().getContextP
 <div class="container">
 <div class="span-20 prepend-2">
 <ul class="horizontal">
+	<li class="noBullet"><a href="http://code.google.com/p/tm2o/wiki/Main">Documentation</a></li>
 	<li class="noBullet"><a href="http://topicmapslab.de/impressum">Imprint</a></li>
 	<li>TM2O-Service is a service by the <a
 		href="http://www.topicmapslab.de">Topic Maps Lab</a> &copy; 2011</li>
