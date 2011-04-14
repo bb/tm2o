@@ -8,6 +8,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <eclipselink.version>2.0.2</eclipselink.version>
         <jersey.version>1.1.5</jersey.version>
+		<server.url>http://localhost:8080</server.url>
     </properties>  
   <build>
 		<resources>
@@ -52,11 +53,10 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<version>1.1</version>
 				<configuration>
-					<password>tomcat</password>
-					<username>tomcat</username>
+					<server>nemo-server</server>
 					<warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
 					<update>true</update>
-					<url>http://localhost:8080/manager/html</url>
+					<url>${server.url}/manager/html</url>
 					<tomcatWebXml>${project.build.directory}/${project.build.finalName}/WEB-INF/web.xml</tomcatWebXml>
 				</configuration>
 			</plugin>

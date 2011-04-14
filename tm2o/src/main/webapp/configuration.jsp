@@ -91,6 +91,7 @@
 				Properties prop = null;
 				String file = null;
 				String url = null;
+				String apiKey = null;
 				boolean flatAssociation = false;
 				/*
 				 * is get request	
@@ -100,6 +101,7 @@
 					namespace = mt.getNamespace();
 					prop = mt.getProperties();
 					file = "";
+					apiKey = !local ? (prop.containsKey("api-key")?prop.get("api-key").toString():"") : "";
 					url = !local ? prop.get("server").toString() : "";
 					flatAssociation = prop.get("association-mode").toString().equalsIgnoreCase(EContentProviderConfiguration.FLAT_ASSOCIATION.name());
 				}
@@ -123,6 +125,7 @@
 					namespace = cfg.getNamespace();
 					prop = cfg.getProperties();
 					file = "";
+					apiKey = !local ? (prop.containsKey("api-key")?prop.get("api-key").toString():"") : "";
 					url = !local ? prop.get("server").toString() : "";
 					flatAssociation = prop.get("association-mode").toString().equalsIgnoreCase(EContentProviderConfiguration.FLAT_ASSOCIATION.name());					
 				}
@@ -175,6 +178,11 @@
 					<td><b>MaJorToM Server Address:</b></td>
 					<td><input name="address" id="address" type="text"
 						value="<%=url%>" size="50" onblur="checkServer()"></td>
+				</tr>
+				<tr>
+					<td><b>MaJorToM API Key:</b></td>
+					<td><input name="api-key" id="api-key" type="text"
+						value="<%=apiKey%>" size="50"></td>
 				</tr>
 				<tr>
 					<td />

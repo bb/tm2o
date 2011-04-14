@@ -91,7 +91,7 @@ public class dasdas {
 
 		final String uri = "http://localhost:9090/majortom-server";
 		final String topicMapId = "fe717c45763d7b36067cc17a4b1b5d6";
-		RemoteTmqlHelper helper = new RemoteTmqlHelper(uri, topicMapId);
+		RemoteTmqlHelper helper = new RemoteTmqlHelper(uri, "123456789", topicMapId);
 
 		for (TopicTypeDAO dao : helper.getTopicTypes()) {
 			System.out.println("DAO: " + dao.getTypeLabel() + "(" + dao.getTypeId() + ")");

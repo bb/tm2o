@@ -14,6 +14,7 @@ public class RemoteOdataContentProvider extends TmqlOdataContentProviderImpl<Rem
 
 	private RemoteTmqlHelper helper;
 	private String server;
+	private String apiKey;
 
 	/**
 	 * constructor
@@ -37,8 +38,13 @@ public class RemoteOdataContentProvider extends TmqlOdataContentProviderImpl<Rem
 		if (oServer == null) {
 			throw new TopicMapsODataException("Missing required property of server URL");
 		}
+		Object oAPIKey = properties.get("api-key");
+		if (oAPIKey == null) {
+			throw new TopicMapsODataException("Missing required property of API Key of MaJorToM server");
+		}
 		server = oServer.toString();
-		helper = new RemoteTmqlHelper(getServerUrl(), getTopicMapId());
+		apiKey = oAPIKey.toString();
+		helper = new RemoteTmqlHelper(getServerUrl(), getApiKey(), getTopicMapId());
 		super.initialize(namespace, properties);
 	}
 
@@ -57,5 +63,14 @@ public class RemoteOdataContentProvider extends TmqlOdataContentProviderImpl<Rem
 	 */
 	protected String getServerUrl() {
 		return server;
+	}
+
+	/**
+	 * Returns the API key
+	 * 
+	 * @return the API key
+	 */
+	protected String getApiKey() {
+		return apiKey;
 	}
 }

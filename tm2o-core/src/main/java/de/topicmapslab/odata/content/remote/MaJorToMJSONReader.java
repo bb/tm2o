@@ -78,7 +78,11 @@ public class MaJorToMJSONReader {
 		ObjectMapper m = new ObjectMapper();
 		JsonNode rootNode = m.readValue(stream, JsonNode.class);
 		JsonNode code = rootNode.path("code");
-		lastState = code.getIntValue();
+		try {
+			lastState = Integer.parseInt(code.getValueAsText());
+		} catch (NumberFormatException e) {
+			lastState = -1;
+		}
 		JsonNode msg = rootNode.path("msg");
 		lastMessage = msg.getTextValue();
 		if (lastState == 0) {

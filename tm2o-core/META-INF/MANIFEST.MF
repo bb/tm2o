@@ -26,7 +26,7 @@ Created-By: 1.6.0_20 (Sun Microsystems Inc.)
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.tmapi;bundle-version="2.0.3"
 Bundle-Version: 0.0.1
-Bnd-LastModified: 1301900704360
+Bnd-LastModified: 1302766755140
 Bundle-ManifestVersion: 2
 Bundle-Description: Odata for Topic Maps
 Import-Package: org.osgi.framework;version="[1.4,2)",org.slf4j;version

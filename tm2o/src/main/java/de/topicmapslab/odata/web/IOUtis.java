@@ -47,6 +47,7 @@ public class IOUtis {
 			boolean local = false;
 			String namespace = null;
 			String address = null;
+			String apiKey = null;
 			File f = null;
 			/*
 			 * Create a new file upload handler
@@ -70,6 +71,8 @@ public class IOUtis {
 						address = value;
 					} else if ("namespace".equalsIgnoreCase(name)) {
 						namespace = value;
+					} else if ("api-key".equalsIgnoreCase(name)) {
+						apiKey = value;
 					}
 				}
 				/*
@@ -113,6 +116,9 @@ public class IOUtis {
 			if (address != null) {
 				properties.put("server", address);
 			}
+			if (apiKey != null) {
+				properties.put("api-key", apiKey);
+			}
 			if (f != null) {
 				properties.put("file", f);
 				properties.put("path", f.getAbsolutePath());
@@ -129,16 +135,19 @@ public class IOUtis {
 	 * 
 	 * @param serverAddress
 	 *            the server address
+	 * 
+	 * @param apiKey
+	 *            the API key
 	 * @return a possible empty map of locator and ID
 	 */
-	public static Map<String, String> getTopicMapIds(final String serverAddress) {
+	public static Map<String, String> getTopicMapIds(final String serverAddress, final String apiKey) {
 		Map<String, String> topicMaps = new HashMap<String, String>();
 
 		try {
 			/*
 			 * open streams
 			 */
-			URL url = new URL(serverAddress + "/tm/topicmaps");
+			URL url = new URL(serverAddress + "/tm/topicmaps?apikey=" + apiKey);
 			URLConnection connection = url.openConnection();
 			connection.setDoInput(true);
 			/*

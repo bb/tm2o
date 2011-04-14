@@ -23,7 +23,6 @@
 	media="screen, projection" rel="stylesheet" type="text/css" />
 <title>OData services</title>
 </head>
-<body>
 <body class="maintenance">
 <div id="wrapper">
 <div id="header">
@@ -51,8 +50,9 @@ Usually the topic maps exposed by this service as OData are managed by an extern
 <%
 	}else{
 		Object serverAddress = mt.getProperties().get("server");
-		if ( serverAddress != null ){
-			Map<String, String> tms = IOUtis.getTopicMapIds(serverAddress.toString());
+		Object apiKey = mt.getProperties().get("api-key");
+		if ( serverAddress != null && apiKey != null  ){
+			Map<String, String> tms = IOUtis.getTopicMapIds(serverAddress.toString(),apiKey.toString());
 			if ( tms == null ){
 %>
 		<b>The MaJorToM server does not response to any request.</b>
@@ -78,7 +78,7 @@ Usually the topic maps exposed by this service as OData are managed by an extern
 			}
 		}else{
 %>
-		<b>Missing server address for remote content provider!</b>
+		<b>Missing <%=serverAddress==null?"server address":"API key"%> for remote content provider!</b>
 <%
 		}
 
@@ -100,4 +100,6 @@ You can configure your TM2O service <a href="<%= getServletContext().getContextP
 </div>
 </div>
 </div>
+</div>
+</body>
 </html>

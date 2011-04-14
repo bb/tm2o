@@ -37,6 +37,10 @@ public class RemoteTmqlHelper extends TmqlHelper {
 	 * the URL of remote server
 	 */
 	private final String uri;
+	/**
+	 * the API Key of remote server
+	 */
+	private final String apiKey;
 
 	/**
 	 * URL pattern for POST request
@@ -48,11 +52,14 @@ public class RemoteTmqlHelper extends TmqlHelper {
 	 * 
 	 * @param server
 	 *            the server URL
+	 * @param apiKey
+	 *            the API key
 	 * @param topicMapId
 	 *            the topic map id
 	 */
-	public RemoteTmqlHelper(final String server, final String topicMapId) {
+	public RemoteTmqlHelper(final String server, final String apiKey, final String topicMapId) {
 		this.topicMapId = topicMapId;
+		this.apiKey = apiKey;
 		this.uri = MessageFormat.format(PATTERN, server, topicMapId);
 	}
 
@@ -125,7 +132,7 @@ public class RemoteTmqlHelper extends TmqlHelper {
 			/*
 			 * build POST message
 			 */
-			final String msg = "query=" + query;
+			final String msg = "apikey=" + apiKey + "&query=" + query;
 			/*
 			 * open streams
 			 */
